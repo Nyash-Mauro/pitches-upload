@@ -22,4 +22,13 @@ class User(UserMixin,db.Model):
     @property
     def password(self):
         raise AttributeError('Cant read password attribute')
-    @password.setter()
+
+    @password.setter
+    def password(self,password):
+        self.pass_secure= generate_password_hash(password)
+
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
+
+    def __repr__(self):
+        return f'User{self.username}'
