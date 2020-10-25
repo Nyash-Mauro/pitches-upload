@@ -1,0 +1,6 @@
+virtual/
+*.pyc
+.env
+env/
+.gitignore
+./start.sh
