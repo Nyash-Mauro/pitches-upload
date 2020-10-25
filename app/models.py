@@ -105,3 +105,17 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User{self.name}'
+
+class PitchCategory(db.Model):
+    """ defines different categories of pitches """
+    __talename__='pitches_categories'
+
+    id= db.Column(db.Interger,primary_key=True)
+    name_of_category=db.Column(db.String(255))
+    category_description=db.Column(db.String(255))
+
+    @classmethod
+    def get_categories(cls):
+        """ gets all the categories from the database """
+        categories = PitchCategory.query.all()
+        return categories
