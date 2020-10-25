@@ -7,20 +7,18 @@ from .. import db,photos
 
 @main.route('/')
 def index():
-    """ View root page func that returns the index page and its data """
-    return render_template('index.html')
 
-@main.route('/all_pitches')
-def all_pitches():
-    general = Pitch.query.all()
-    return render_template('all pitches.html',general=general)
-
-@main.route('/interview')
-def interview():
-    comment =Comment.query.all()
-    interview = Pitch.query.filter_by(category ='Interview Pitch').all()
-    return render_template('interview.html',interview=interview,comment=comment)
-
-@main.route('/promotion')
-def promotion():
+    '''
+    View root page function that returns the index page and its data
+    '''
     
+    title = 'Pitch Deck'
+    
+    return render_template('index.html', title = title)
+
+@main.route('/loggedin')
+def loggedin():
+
+    title='Pitch Deck'
+
+    return render_template('login.html',title=title)
