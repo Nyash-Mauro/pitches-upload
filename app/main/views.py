@@ -116,3 +116,8 @@ def addpitch(pitchname):
 
     title = 'add a new pitch'
     return render_template('new_pitch.html',form=form,title=title)
+
+@main.route('/all_pitches')
+def all_pitches():
+
+    return render_template('all-pitches.html')
