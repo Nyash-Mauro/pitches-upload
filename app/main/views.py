@@ -21,3 +21,6 @@ def interview():
     interview = Pitch.query.filter_by(category ='Interview Pitch').all()
     return render_template('interview.html',interview=interview,comment=comment)
 
+@main.route('/promotion')
+def promotion():
+    
