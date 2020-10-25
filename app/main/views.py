@@ -9,3 +9,8 @@ from .. import db,photos
 def index():
     """ View root page func that returns the index page and its data """
     return render_template('index.html')
+render_template
+@main.route('/all_pitches')
+def all_pitches():
+    general = Pitch.query.all()
+    return render_template('all pitches.html',general=general)
