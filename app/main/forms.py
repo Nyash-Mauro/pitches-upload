@@ -15,3 +15,13 @@ class PitchForm(FlaskForm):
     category_id = SelectField('Select category',choices=[('1','Interview'),('1','Interview'),('1','Promotion'),('1','Product'),('1','Pick Up lines')])
     content = TextAreaField('Your pitch')
     submit =SubmitField('Create your pitch')
+class UpvoteForm(FlaskForm):
+    '''
+    Class to create a wtf form for upvoting a pitch
+    '''
+    submit = SubmitField('Upvote')
+class DownForm(FlaskForm):
+    '''
+    Class to create a wtf form for downvoting a pitch
+    '''
+    submit = SubmitField('Downvote')
