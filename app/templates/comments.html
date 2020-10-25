@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container profile">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+
+
+            <h2 class="text-center">Add a Comment</h2>
+
+
+            {{wtf.quick_form(form)}}
+
+            <h1>Past Comments</h1>
+            {% if comments %}
+            {% for comment in comments%}
+
+
+            <p>{{comment}}<small>Posted by: {{user}}</small></p>
+
+            {% endfor %}
+            {% else %}
+            <p>No comments</p>
+            {% endif %}
+
+
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
+{% endblock %}
