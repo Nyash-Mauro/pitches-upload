@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block styles %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+<link href="https://fonts.googleapis.com/css?family=Italianno&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Bungee+Inline|Italianno&display=swap"
+    rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<h1>welcome to Pitches where you pitch is appreciated by us</h1>
+<br>
+<br>
+<br>
+<div class="styled">
+    <a href="{{url_for('auth.login')}}" class='btn btn-primary'>Start Pitching</a>
+
+</div>
+
+{% endblock %}
