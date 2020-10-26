@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+{% endblock %}
+{% block content %}
+{{super()}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card profile-card mt-2">
+                {% if user.profile_img %}
+                <div class="card-img-block text-center">
+                    <img class="card-img-top" src="{{url_for('static', filename = user.profile_img)}}"
+                        alt="profile image" style="width:auto;height:30%;"
+                        class="img-rounded img-responsive text-center">
+                </div>
+                {%else%}
+                <div class="card-img-block">
+                    <img class="card-img-top" src="{{url_for('static', filename = 'images/default.jpg')}}" alt=""
+                        style="width:auto;height:30%;" class="img-rounded img-responsive text-center">
+                </div>
+                {%endif%}
+                {% if user == current_user %}
+                <form action="{{url_for('main.update_profile_pic',username=user.username)}}" method="post"
+                    enctype="multipart/form-data" class="mt-2 text-center">
+                    <h6><strong> Change Profile Picture</strong> </h6>
+                    <input type="file" class="filestyle" data-icon="false" name="photo" required>
+                    <input type="submit">
+                </form>
+                {% endif %}
+                <div class="card-body text-center">
+                    {% if user == current_user %}
+                    <h5 class="card-title"><strong> {{current_user.username}}</strong><small> E-mail:
+                            <strong>{{ current_user.email }} </strong></small></h5>
+                    {%endif%}
+                    {% if current_user.bio %}
+                    <div class="bio">
+                        <h6 class="card-title"> <strong>Your Bio</strong> </h6>
+                        <p class="card-text ">{{ current_user.bio }}</p>
+                    </div>
+                    {% else %}
+                    <div class="bio">
+                        <h6 class="card-title"> <strong>Your Bio</strong> </h6>
+                        <p class="card-text">It is really important to add Your bio .It helps other users on pitches to
+                            know you more.</p>
+                    </div>
+                    {% endif %}
+                    {% if user == current_user %}
+                    <a href="{{url_for('main.update_profile',username=user.username)}}">Edit profile</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h1 class='text-center' style="color:white;">Your Pitches</h1>
+            {%if pitch%}
+            {%for pitch_item in pitch%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="card mt-5">
+                            <div class="card-header">
+                                <b>{{pitch_item.category}}</b>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <i><strong>{{pitch_item.title}}</strong></i><br>
+                                    <i>{{pitch_item.content}}</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
