@@ -36,16 +36,16 @@ def pick_up_line():
 
     return render_template('pickup.html', title = title, pitches= pitches )
 
-@main.route('/promotion/pitches/')
-def promotion():
+@main.route('/dating/pitches/')
+def dating():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Promotion Pitches'
+    title = 'dating Pitches'
 
     pitches= Pitch.get_all_pitches()
 
-    return render_template('promotion.html', title = title, pitches= pitches )
+    return render_template('dating.html', title = title, pitches= pitches )
 
 
 @main.route('/product/pitches/')
