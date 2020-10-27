@@ -87,3 +87,4 @@ class Comment(db.Model):
                 
     def __repr__(self):
         return f'COMMENT {self.comment_content}'
+
