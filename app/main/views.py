@@ -120,4 +120,4 @@ def addpitch(pitchname):
 @main.route('/all_pitches')
 def all_pitches():
 
-    return render_template('all-pitches.html')
+    return render_template('all_pitches.html')
